@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 // Import userRoutes
+
 const userRoutes = require("./routes/userRoutes");
 
 // from .env file
@@ -15,15 +16,12 @@ require("dotenv").config();
 const app = express();
 
 // Set the port to 7000
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 4200;
 
 // Connect to MongoDB
 const connectDb = async function () {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,useUnifiedTopology: true,});
     return console.log("MongoDB Successfully Connected...");
   } catch (err) {
     return console.log(err);
@@ -31,10 +29,11 @@ const connectDb = async function () {
 };
 
 // Middleware
-app.use(express.json()); 
-app.use(cors("http://localhost:7000")); 
-app.use(helmet()); 
-app.use(morgan("common")); 
+app.use(express.json());
+app.use(cors("http://localhost:4200"));
+app.use(express.static('coaching'));
+app.use(helmet());
+app.use(morgan("common"));
 
 // Default route
 app.get("/", (req, res) => {
@@ -45,9 +44,7 @@ app.get("/", (req, res) => {
 connectDb();
 
 // Define routes for user related operations
-app.use("/", userRoutes);
+app.use("/user", userRoutes);
 
 // Start the server and listen on the specified port
-app.listen(PORT, () => {
-  console.log(`Server running on port no ${PORT}!!!!!!`);
-});
+app.listen(PORT, () => {console.log(`Server running on port no ${PORT}!!!!!!`);});
