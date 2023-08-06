@@ -16,7 +16,7 @@ require("dotenv").config();
 const app = express();
 
 // Set the port to 7000
-const PORT = process.env.PORT || 4200;
+const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
 const connectDb = async function () {
@@ -30,7 +30,7 @@ const connectDb = async function () {
 
 // Middleware
 app.use(express.json());
-app.use(cors("http://localhost:4200"));
+app.use(cors("http://localhost:3000"));
 app.use(express.static('coaching'));
 app.use(helmet());
 app.use(morgan("common"));
