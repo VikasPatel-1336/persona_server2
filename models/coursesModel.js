@@ -9,7 +9,11 @@ const CoursesSchema = new mongoose.Schema({
     type: String,
     required: true,
     },
-    courseprice:{
+    originalprice:{
+    type: String,
+    required: true,
+    },
+    finalprice:{
     type: String,
     required: true,
     }
