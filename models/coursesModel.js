@@ -13,8 +13,32 @@ const CoursesSchema = new mongoose.Schema({
     type: String,
     required: true,
     },
-    finalprice:{
+    discountedprice:{
     type: String,
+    required: true,
+    },
+    dppsolution:{
+    type: String,
+    required: true,
+    },
+    dpp:{
+    type: String,
+    required: true,
+    },
+    livelectures:{
+    type: String,
+    required: true,
+    },
+    modules:{
+    type: String,
+    required: true,
+    },
+    tests:{
+    type: String,
+    required: true,
+    },
+    batchdetails:{
+    type: [[String]],
     required: true,
     }
 });

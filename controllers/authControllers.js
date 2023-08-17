@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  const { username, email, mobile, joiningas, password } = req.body;
+  const { username, email, mobile, password } = req.body;
 
   try {
     const existingUser = await User.findOne({ email: email });
@@ -17,14 +17,13 @@ const register = async (req, res) => {
       username: username,
       email: email,
       mobile: mobile,
-      joiningas: joiningas,
       password: hashedPassword,
     });
     const token = jwt.sign(
       { email: result.email, id: result._id },
       process.env.ACCESS_TOKEN_SECRET
     );
-    res.status(201).json({ user: result, token: token });
+    res.status(201).json({ user: result, token: token,message:"User created successfully", success: true });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal Server error", success: false });
