@@ -28,10 +28,6 @@ const UserSchema = new mongoose.Schema({
     max: 10,
     min: [10, "mobile number should not exceed 10"],
   },
-  joiningas: {
-    type: String,
-    required: true,
-  },
 });
 
 module.exports = mongoose.model("userSignup", UserSchema);
