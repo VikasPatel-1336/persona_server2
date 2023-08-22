@@ -1,5 +1,6 @@
 const Courses = require("../models/coursesModel");
 const Detail = require("../models/contactModel");
+const Quiz = require("../models/quizModel");
 const getCourseDetails = async (req, res) => {
   try {
     const details = await Courses.find();
@@ -35,5 +36,15 @@ const contactdetails = async (req, res) => {
     });
   }
 };
- 
-module.exports = { getCourseDetails, contactdetails};
+ const getQuizDetails = async (req, res) => {
+  try {
+    const details = await Quiz.find();
+    res.status(200).json({ details });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+ }
+module.exports = { getCourseDetails, contactdetails,getQuizDetails};
