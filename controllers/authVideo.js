@@ -32,6 +32,8 @@ const VideoStream =async (req,res)=>{
     const videoStream = fs.createReadStream(videoUrl,{start,end});
     videoStream.pipe(res);
 };
+
+// http://localhost:3000/user/VideoStream
 module.exports={
     VideoStream
 }
