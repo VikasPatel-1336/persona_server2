@@ -2,6 +2,7 @@ const QuizMarksModel = require("../models/quizMarksModel");
 
 const UserMarks= async(req,res)=>{
     const {userTrueAns } = req.body;
+    console.log("This is the userTrueAns",userTrueAns);
     try {
         const userMarks = new QuizMarksModel({
             userTrueAns,
