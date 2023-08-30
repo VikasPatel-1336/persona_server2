@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
         "getquizdetails",
-        "Ironman"
-    ]
+        "Ironman",
+        "usermarks"
+    ],
+    "liveServer.settings.port": 5501
 }
